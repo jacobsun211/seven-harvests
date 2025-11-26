@@ -1,0 +1,1 @@
+# this directory is for creating the tables in the database
