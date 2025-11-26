@@ -1,4 +1,4 @@
-from sqlmodel import SQLModel, Field, create_engine, Session, select
+from sqlmodel import create_engine, Session
 from app.models.dorms import Dorms
 from app.dal.soldiers_dal import most_far_soldier
 
@@ -18,11 +18,9 @@ def assignment_to_dorms():
                     Room = room,
                     soldeirId = soldier,
                 )
-                # print(Dorms.soldierId)
+
                 with Session(engine) as session:
                     session.add(assignment)
                     session.commit()
                     session.refresh(assignment)
-
-
 

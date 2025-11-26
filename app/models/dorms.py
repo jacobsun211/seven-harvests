@@ -12,13 +12,3 @@ class Dorms(SQLModel, table=True):
 
 
 
-# dorm = 1
-# rooms = range(1,8)
-# soldier = "id"
-# row = []
-# for roomNum in rooms:
-#     row.append([dorm,roomNum,soldier])
-
-
-# print(row)
-# room1 = [[None] * 8] * 10

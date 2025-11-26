@@ -5,7 +5,6 @@ engine = create_engine("sqlite:///database.db")
 
 
 def add_soldier(soldier):
-    # print(soldier)
     soldier = Soldiers(
         soldierId = soldier[0],
         firstName = soldier[1],
@@ -20,5 +19,5 @@ def add_soldier(soldier):
         session.add(soldier)
         session.commit()
         session.refresh(soldier)
-    # print(f"soldier created: {soldier}")
+    print(f"soldier created: {soldier}")
 

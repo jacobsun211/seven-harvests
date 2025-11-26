@@ -1,11 +1,11 @@
-from sqlmodel import SQLModel, Field, create_engine, Session, select
+from sqlmodel import SQLModel, create_engine
 from fastapi import FastAPI, UploadFile
 import csv
 import uvicorn
 import io
 from app.services.dorms_sevices import assignment_to_dorms
 from app.services.soldier_services import add_soldier
-from app.models.dorms import Dorms
+
 
 app = FastAPI()
 items = []
@@ -26,14 +26,12 @@ def upload_csv(file: UploadFile):
     rows = list(reader)
     for line in rows:  # create and add soldier object from csv line
         add_soldier(line)
-    # SQLModel.metadata.create_all(engine)
+
     assignment_to_dorms() # auto assign soldiers based on distance
 
     return rows
 
 SQLModel.metadata.create_all(engine)
-
-
 
 
 

@@ -1,6 +1,5 @@
 from sqlmodel import SQLModel, Field, create_engine, Session, select,update,func
 from app.models.soldiers import Soldiers
-from app.services.soldier_services import add_soldier
 
 engine = create_engine("sqlite:///database.db")
 SQLModel.metadata.create_all(engine)
@@ -11,7 +10,6 @@ def most_far_soldier():
         statement = select(Soldiers).where(Soldiers.assignmentStatus == False ).order_by(Soldiers.DistanceFromBase)
         soldier = session.exec(statement).all()
         update_assignmentStatus_soldier(soldier[0])
-        print(soldier)
         return soldier
 
 
@@ -37,10 +35,4 @@ def all_soldiers_assigned():
 
 
 
-# update_assignmentStatus_soldier()
-
-
-# def get_soldier_by_Id():
-#     with Session(engine) as session:
-#         statement = select(Soldiers).where(Soldiers.soldierId == terroristId)
 
