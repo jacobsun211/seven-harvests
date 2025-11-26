@@ -4,7 +4,8 @@ import csv
 import uvicorn
 import io
 from app.services.soldier_services import add_soldier
-
+from sqlalchemy import Text, Date, Column, delete
+import  _sqlite3
 
 app = FastAPI()
 items = []
@@ -23,6 +24,7 @@ def upload_csv(file: UploadFile):
     content = file.file.read().decode("utf-8")
 
     reader = csv.reader(io.StringIO(content))
+    next(reader)
     rows = list(reader)
 
     for line in rows: # create and add soldier object from csv line
