@@ -1,15 +1,24 @@
 from sqlmodel import SQLModel, Field
-
+from typing import Optional
 
 
 class Dorms(SQLModel, table=True):
-    dormId: int = Field(default=None, primary_key=True)
-    firstName: str
-    lastName: str
-    Gender: str
-    City: str
-    DistanceFromBase: int
+    Id: int = Field(default=None, primary_key=True)
+    Dorm: int
+    Room: int
+    soldierId: Optional[int] = Field(foreign_key='soldiers.soldierId')
 
 
 
-room1 = [[None] * 8] * 10
+
+
+# dorm = 1
+# rooms = range(1,8)
+# soldier = "id"
+# row = []
+# for roomNum in rooms:
+#     row.append([dorm,roomNum,soldier])
+
+
+# print(row)
+# room1 = [[None] * 8] * 10
